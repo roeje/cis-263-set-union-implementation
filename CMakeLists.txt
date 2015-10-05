@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.3)
+project(hw35)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+set(SOURCE_FILES hw35_main.cpp gvsu_cis.h hw35_union.h catch.hpp)
+add_executable(hw35 ${SOURCE_FILES})
