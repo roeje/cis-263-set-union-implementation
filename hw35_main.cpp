@@ -98,11 +98,11 @@ TEST_CASE ("Randomly generated integers") {
         std::uniform_int_distribution<unsigned int> uniform;
     };
 
-    FAIL ("Comment out this FAIL assertion, after your change N");
-    /* start testing with a small value of N, and gradually increase N. Can
-     * your code handle up to 100 thousand within a "reasonable" amount of
-     * time? */
-    const unsigned int N = 100000;
+//    FAIL ("Comment out this FAIL assertion, after your change N");
+//    /* start testing with a small value of N, and gradually increase N. Can
+//     * your code handle up to 100 thousand within a "reasonable" amount of
+//     * time? */
+    const unsigned int N = 1000;
     list<unsigned int> one, two;
 
     /* resize and initialize the list */
