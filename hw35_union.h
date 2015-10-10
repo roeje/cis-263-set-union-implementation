@@ -1,5 +1,5 @@
 /*
- * Include your name(s) here
+ * Jesse Roe, Tyler Paquet, and Brandon Attala
  */
 
 #ifndef GVSU_LIST_UNION
@@ -10,22 +10,27 @@
 using std::list;
 
 using namespace std;
-//typedef list<T> listType;
-/* The template function below will be tested against different
- * element type (T): int, char, and string. 
- * Nevertheless, you shall write only ONE function below */
 template<typename T>
 list<T> listUnion(const list<T> &one, const list<T> &two) {
-
+    /*Temp variable used in second version the uses erase*/
 //    list<T> tempTwo = two;
-//    list<T> tempOne = one;
-//    tempOne.unique();
-//    tempOne.sort();
-//    tempTwo.unique();
-//    tempTwo.sort();
+
+    /*results contains all values from list one*/
     list<T> result = two;
-//
-//    for (auto it = tempOne.begin(); it != tempOne.end(); ++it) {
+
+    for (auto it = one.begin(); it != one.end(); ++it) {
+        /*binary search is used find values in list two that are present in list one.
+         * If a duplicate is NOT found the value in list two the the value in list one is added to the results list.
+         * */
+        if (!std::binary_search(two.begin(), two.end(), *it)) {
+            result.push_back(*it);
+        }
+    }
+/*
+ * Version of method that uses erase to shrink second list each time a duplicate is found.
+ * This causes the loop to resemble log(N) or close to it.
+ */
+//    for (auto it = one.begin(); it != one.end(); ++it) {
 //        bool temp = true;
 //        for(auto it2 = tempTwo.begin(); it2 != tempTwo.end(); ++it2) {
 //
@@ -40,75 +45,9 @@ list<T> listUnion(const list<T> &one, const list<T> &two) {
 //        }
 //    }
 
-    for (auto it = one.begin(); it != one.end(); ++it) {
-        if (!std::binary_search(two.begin(), two.end(), *it)) {
-            result.push_back(*it);
-        }
-    }
     result.sort();
     result.unique();
     return result;
 };
 
-
-/* Write your solution here using ONLY std::list operations.
- * (You are not allowed to use other data structures such as
- * map, set, vector, ...). You will, of course, use loops
- * and conditional statements.
- *
- * Reference: http://en.cppreference.com/w/cpp/container/list.
- */
-
-
-//    for (auto it = tempOne.begin(); it != tempOne.end(); ++it) {
-//        if (it > tempTwo.begin()) {
-//            tempTwo.pop_front();
-//        }
-//        else {
-//            if (it == tempTwo.begin()) {
-//                result.push_back(it);
-//            }
-//            tempTwo.pop_front();
-//        }
-//    }
-
-//    for (auto it = one.begin(); it != one.end(); ++it) {
-//        if(*it > *tempTwo.begin()) {
-//            tempTwo.pop_front();
-//        }
-//        else {
-//            if (*it != *tempTwo.begin()) {
-//                result.push_back(*it);
-//            }
-//            tempTwo.pop_front();
-//        }
-//    }
-//    if(tempTwo.size() > 0) {
-//        result.merge(tempTwo);
-//    }
-
-
-
-//}
-
-//    for (list<T>::iterator it = tempOne.begin(); it != tempOne.end(); ++it) {
-//        if (*it > *tempTwo.begin()) {
-//            tempTwo.pop_front();
-//        }
-//        else {
-//            if (*it == *tempTwo.begin()) {
-//                result.push_back(it);
-//            }
-//            tempTwo.pop_front();
-//        }
-//    }
-
-//    tempTwo.merge(tempOne);
-//    result = tempTwo;
-
-
-//
-//void main {
-//        list<int> temp1 {1,2,3,4,5};
-//};
 #endif

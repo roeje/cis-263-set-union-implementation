@@ -102,7 +102,7 @@ TEST_CASE ("Randomly generated integers") {
 //    /* start testing with a small value of N, and gradually increase N. Can
 //     * your code handle up to 100 thousand within a "reasonable" amount of
 //     * time? */
-    const unsigned int N = 1000;
+    const unsigned int N = 100000;
     list<unsigned int> one, two;
 
     /* resize and initialize the list */
@@ -122,7 +122,7 @@ TEST_CASE ("Randomly generated integers") {
 
     /* create an auxiliary array */
     vector<int> vals (one.begin(), one.end());
-    std::uniform_int_distribution<unsigned int> selector (0, r3.size() - 1);
+    std::uniform_int_distribution<unsigned int> selector (0, vals.size() - 1);
     std::random_device rd;
 
     /* randomly select 20% of the items for match */
